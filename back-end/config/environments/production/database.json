@@ -7,9 +7,9 @@
         "client": "sqlite",
         "host": "us-cdbr-iron-east-01.cleardb.net",
         "port": 3306,
-        "database": "heroku_f65173ceedbc863",
-        "username": "b5dfca0dc4a00c",
-        "password": "d77b6180"
+        "database": "heroku_a6dedcebf0ee033",
+        "username": "b88ad87d2f9eca",
+        "password": "81143ef5"
       },
       "options": {}
     }
