@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "name": "Comment"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "product": {
+      "model": "products"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "mess": {
+      "type": "richtext"
+    },
+    "comment": {
+      "model": "comment"
+    }
+  }
+}

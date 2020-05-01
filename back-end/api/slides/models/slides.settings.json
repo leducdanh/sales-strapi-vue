@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slides",
+  "info": {
+    "name": "slides"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "image_link": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "alias": {
+      "type": "string",
+      "unique": true
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

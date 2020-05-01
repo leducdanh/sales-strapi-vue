@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_images",
+  "info": {
+    "name": "product_images"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "image_link": {
+      "type": "string"
+    },
+    "product": {
+      "model": "products"
+    }
+  }
+}
