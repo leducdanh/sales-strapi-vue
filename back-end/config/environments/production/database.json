@@ -5,11 +5,11 @@
       "connector": "bookshelf",
       "settings": {
         "client": "sqlite",
-        "host": "${process.env.DATABASE_HOST || '127.0.0.1'}",
-        "port": "${process.env.DATABASE_PORT || 27017}",
-        "database": "${process.env.DATABASE_NAME || 'strapi'}",
-        "username": "${process.env.DATABASE_USERNAME || ''}",
-        "password": "${process.env.DATABASE_PASSWORD || ''}"
+        "host": "us-cdbr-iron-east-01.cleardb.net",
+        "port": 3306,
+        "database": "heroku_f65173ceedbc863",
+        "username": "b5dfca0dc4a00c",
+        "password": "d77b6180"
       },
       "options": {}
     }
