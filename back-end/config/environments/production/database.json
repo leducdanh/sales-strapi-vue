@@ -4,7 +4,7 @@
     "default": {
       "connector": "bookshelf",
       "settings": {
-        "client": "sqlite",
+        "client": "mysql",
         "host": "us-cdbr-iron-east-01.cleardb.net",
         "port": 3306,
         "database": "heroku_a6dedcebf0ee033",
