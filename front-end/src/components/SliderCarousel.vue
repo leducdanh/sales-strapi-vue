@@ -6,27 +6,25 @@
         <div class="col-sm-12">
           <div id="slider-carousel" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-              <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-              <li data-target="#slider-carousel" data-slide-to="1"></li>
-              <li data-target="#slider-carousel" data-slide-to="2"></li>
+              <li v-for="(item, index) in ListImage" data-target="#slider-carousel" :data-slide-to="index" 
+              :class="index < 1 ? 'active' : ''" :key="item.id"></li>
             </ol>
 
             <div class="carousel-inner">
-              <div class="item active">
+              <div v-for="(item, index) in ListImage" :class="index < 1 ? 'item active' : 'item'" :key="item.id">
                 <div class="col-sm-6">
                   <h1>
                     <span>E</span>-SHOPPER
                   </h1>
-                  <h2>Free E-Commerce Template</h2>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <h2>{{item.title}}</h2>
+                  <p>{{item.content}}</p>
                   <button type="button" class="btn btn-default get">Get it now</button>
                 </div>
                 <div class="col-sm-6">
-                  <img src="../assets/images/home/girl1.jpg" class="girl img-responsive" alt />
-                  <img src="../assets/images/home/pricing.png" class="pricing" alt />
+                  <img :src="item.image_link" class="girl img-responsive" alt />
                 </div>
               </div>
-              <div class="item">
+              <!-- <div class="item">
                 <div class="col-sm-6">
                   <h1>
                     <span>E</span>-SHOPPER
@@ -37,11 +35,10 @@
                 </div>
                 <div class="col-sm-6">
                   <img src="../assets/images/home/girl2.jpg" class="girl img-responsive" alt />
-                  <img src="../assets/images/home/pricing.png" class="pricing" alt />
                 </div>
-              </div>
+              </div> -->
 
-              <div class="item">
+              <!-- <div class="item">
                 <div class="col-sm-6">
                   <h1>
                     <span>E</span>-SHOPPER
@@ -52,9 +49,8 @@
                 </div>
                 <div class="col-sm-6">
                   <img src="../assets/images/home/girl3.jpg" class="girl img-responsive" alt />
-                  <img src="../assets/images/home/pricing.png" class="pricing" alt />
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
@@ -72,9 +68,26 @@
 </template>
 
 <script>
+import poco from '../../contact/domain.js'
+import axios from 'axios'
 export default {
   name: "SliderCarousel",
-  props: {}
+  props: {},
+  data() {
+    return {
+      ListImage: []
+    }
+  },
+  mounted(){
+    var self = this
+    axios.get(`${poco.domain}/slides`)
+    .then(res => {
+      self.ListImage = JSON.parse(JSON.stringify(res.data))
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 };
 </script>
 
