@@ -43,6 +43,7 @@ export default {
   },
   mounted() {
     var self = this;
+    console.log("this.$route.params.alias", this.$route.params.alias)
     axios
       .get(`${poco.domain}/category-of-products?categorie.alias=${this.$route.params.alias}`)
       .then(res => {

@@ -55,5 +55,21 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+@media (max-width: 767px){
+    .mainmenu ul li a {
+        color: #fff;
+        text-align: left;
+    }
+    ul.sub-menu {
+        position: relative;
+        width: auto;
+        display: block;
+        background: transparent;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        top: 0;
+        text-align: left !important;
+	}
+}
 </style>

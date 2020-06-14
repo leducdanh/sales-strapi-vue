@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sub_menus",
+  "info": {
+    "name": "SubMenu"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "private": false,
+      "required": true,
+      "unique": true
+    },
+    "alias": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "img_link": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    },
+    "categorie": {
+      "model": "categorie"
+    }
+  }
+}
