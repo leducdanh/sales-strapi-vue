@@ -23,13 +23,13 @@
                 <router-link to="/">HOME</router-link>
               </li>
               <li class="dropdown" v-for="item in listMenu" :key="item.alias">
-                <router-link :to="'/cat/' + item.alias">
+                <router-link :to="'/cat/' + item.alias" >
                   {{item.name}}
                   <i v-if="item.submenu.length > 0" class="fa fa-angle-down"></i>
                 </router-link>
                 <ul v-if="item.submenu.length > 0" role="menu" class="sub-menu">
                   <li v-for="sub in item.submenu" :key="sub.alias">
-                    <router-link :to="'/#/cat/' + sub.alias">{{sub.name}}</router-link>
+                    <router-link :to="'/cat/' + sub.alias">{{sub.name}}</router-link>
                   </li>
                 </ul>
               </li>

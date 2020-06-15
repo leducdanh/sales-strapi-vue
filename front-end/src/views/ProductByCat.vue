@@ -30,7 +30,7 @@ import poco from "../../contact/domain.js";
 import axios from "axios";
 
 export default {
-  name: "Home",
+  name: "Home2",
   components: {
     SliderCarousel,
     LeftSidebar,

@@ -6,7 +6,7 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <router-link
-              :to="'/#/cat/' + item.alias"
+              :to="'/cat/' + item.alias"
             >{{item.name}}</router-link>
             <a v-if="item.submenu.length > 0" class="badge pull-right"
               data-toggle="collapse"
@@ -20,7 +20,7 @@
             <div class="panel-body">
               <ul>
                 <li v-for="itemSub in item.submenu" :key="itemSub.alias">
-                  <router-link :to="'/#/cat/' + itemSub.alias">{{itemSub.name}}</router-link>
+                  <router-link :to="'/cat/' + itemSub.alias">{{itemSub.name}}</router-link>
                 </li>
               </ul>
             </div>

@@ -18,7 +18,6 @@
         </div>
       </div>
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -26,7 +25,6 @@
 // @ is an alias to /src
 import SliderCarousel from "@/components/SliderCarousel.vue";
 import LeftSidebar from "@/components/LeftSidebar.vue";
-import Footer from "@/components/Footer.vue";
 import Product from "@/components/Product.vue";
 import poco from "../../contact/domain.js";
 import axios from "axios";
@@ -37,7 +35,6 @@ export default {
     SliderCarousel,
     LeftSidebar,
     Product,
-    Footer
   },
   data() {
     return {

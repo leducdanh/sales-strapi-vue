@@ -1,23 +1,17 @@
 <template>
   <div id="app">
-    <HeaderTop />
-    <Menu />
-    <HeaderBottom />
-    <router-view />
+    <!-- <TemplataLayout /> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HeaderTop from "@/components/HeaderTop.vue";
-import Menu from "@/components/Menu.vue";
-import HeaderBottom from "@/components/HeaderBottom.vue";
+// import TemplataLayout from "@/components/TemplataLayout.vue";
 
 export default {
   components: {
-    HeaderTop,
-    Menu,
-    HeaderBottom
+    // TemplataLayout
   }
 }
 </script>

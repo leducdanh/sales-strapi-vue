@@ -1,35 +1,43 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import TemplataLayout from "../views/TemplataLayout.vue";
+import ProductByCat from '../views/ProductByCat.vue';
+import Cart from '../views/Cart.vue';
 
 Vue.use(VueRouter)
 
   const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: TemplataLayout,
+    redirect: "/",
+    children: [
+	{
+		path: '/',
+		name: 'Home',
+		component: Home
+	},
+    {
+        path: 'cat/:alias',
+        name: 'ProductByCat',
+        component: ProductByCat
+    },
+    {
+        path: 'product-detail/:name',
+        name: 'ProductDetail',
+        component: () => import('../views/ProductDetail.vue')
+    },
+    {
+        path: 'cart',
+        name: 'Cart',
+        component: Cart
+    }
+	]
   },
-  {
-    path: '/product-detail/:name',
-    name: 'ProductDetail',
-    component: () => import('../views/ProductDetail.vue')
-  },
-  {
-    path: '/cat/:alias',
-    name: 'ProductDetail',
-    component: () => import('../views/ProductByCat.vue')
-  },
-  {
-    path: '/cart',
-    name: 'Cart',
-    component: () => import('../views/Cart.vue')
-  }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes
 })
 
