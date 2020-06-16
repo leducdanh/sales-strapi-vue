@@ -23,117 +23,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr v-for="item in Products" :key="item.idPro">
                 <td class="cart_product">
-                  <a href>
-                    <img src="../assets/images/cart/one.png" alt />
-                  </a>
+                  <router-link :to="`/product-detail/${item.alias}`">
+                    <img :src="item.image" alt style="width: 30%"/>
+                  </router-link>
                 </td>
                 <td class="cart_description">
-                  <h4>
-                    <a href>Colorblock Scuba</a>
-                  </h4>
-                  <p>Web ID: 1089772</p>
+                  <h4>{{item.namePro}}</h4>
                 </td>
                 <td class="cart_price">
-                  <p>$59</p>
+                  <p>{{item.price}} VNĐ</p>
                 </td>
                 <td class="cart_quantity">
                   <div class="cart_quantity_button">
-                    <a class="cart_quantity_up" href>+</a>
+                    <a class="cart_quantity_up btn_quantity" @click="plusQuanlity(item)">+</a>
                     <input
                       class="cart_quantity_input"
                       type="text"
                       name="quantity"
-                      value="1"
+                      :value="item.quantity"
                       autocomplete="off"
                       size="2"
+                      disabled
                     />
-                    <a class="cart_quantity_down" href>-</a>
+                    <a class="cart_quantity_down btn_quantity" @click="minusQuanlity(item)">-</a>
                   </div>
                 </td>
                 <td class="cart_total">
-                  <p class="cart_total_price">$59</p>
+                  <p class="cart_total_price">{{item.quantity * item.price}} VNĐ</p>
                 </td>
                 <td class="cart_delete">
-                  <a class="cart_quantity_delete" href>
-                    <i class="fa fa-times"></i>
-                  </a>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="cart_product">
-                  <a href>
-                    <img src="../assets/images/cart/two.png" alt />
-                  </a>
-                </td>
-                <td class="cart_description">
-                  <h4>
-                    <a href>Colorblock Scuba</a>
-                  </h4>
-                  <p>Web ID: 1089772</p>
-                </td>
-                <td class="cart_price">
-                  <p>$59</p>
-                </td>
-                <td class="cart_quantity">
-                  <div class="cart_quantity_button">
-                    <a class="cart_quantity_up" href>+</a>
-                    <input
-                      class="cart_quantity_input"
-                      type="text"
-                      name="quantity"
-                      value="1"
-                      autocomplete="off"
-                      size="2"
-                    />
-                    <a class="cart_quantity_down" href>-</a>
-                  </div>
-                </td>
-                <td class="cart_total">
-                  <p class="cart_total_price">$59</p>
-                </td>
-                <td class="cart_delete">
-                  <a class="cart_quantity_delete" href>
-                    <i class="fa fa-times"></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td class="cart_product">
-                  <a href>
-                    <img src="../assets/images/cart/three.png" alt />
-                  </a>
-                </td>
-                <td class="cart_description">
-                  <h4>
-                    <a href>Colorblock Scuba</a>
-                  </h4>
-                  <p>Web ID: 1089772</p>
-                </td>
-                <td class="cart_price">
-                  <p>$59</p>
-                </td>
-                <td class="cart_quantity">
-                  <div class="cart_quantity_button">
-                    <a class="cart_quantity_up" href>+</a>
-                    <input
-                      class="cart_quantity_input"
-                      type="text"
-                      name="quantity"
-                      value="1"
-                      autocomplete="off"
-                      size="2"
-                    />
-                    <a class="cart_quantity_down" href>-</a>
-                  </div>
-                </td>
-                <td class="cart_total">
-                  <p class="cart_total_price">$59</p>
-                </td>
-                <td class="cart_delete">
-                  <a class="cart_quantity_delete" href>
+                  <a class="cart_quantity_delete btn_quantity" @click="removeToCart(item)">
                     <i class="fa fa-times"></i>
                   </a>
                 </td>
@@ -146,7 +67,7 @@
     <!--/#cart_items-->
 
     <section id="do_action">
-      <div class="container">
+      <div class="container text-left">
         <div class="heading">
           <h3>What would you like to do next?</h3>
           <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
@@ -237,8 +158,9 @@
 
 <script>
 // @ is an alias to /src
-import poco from "../../contact/domain.js";
-import axios from "axios";
+// import poco from "../../contact/domain.js";
+// import axios from "axios";
+import swal from "sweetalert";
 
 export default {
   name: "Cart",
@@ -248,21 +170,56 @@ export default {
     };
   },
   mounted() {
-    var self = this;
-    axios
-      .get(`${poco.domain}/product`)
-      .then(res => {
-        self.Products = JSON.parse(JSON.stringify(res.data));
-      })
-      .catch(err => {
-        console.log(err);
+    this.Products = JSON.parse(localStorage.getItem("listProOnCart")) || [];
+  },
+  methods: {
+    minusQuanlity(item) {
+      for (const iterator of this.Products) {
+        if (iterator.idPro == item.idPro) {
+          iterator.quantity--;
+          localStorage.setItem("listProOnCart", JSON.stringify(this.Products));
+          return;
+        }
+      }
+    },
+    plusQuanlity(item) {
+      for (const iterator of this.Products) {
+        if (iterator.idPro == item.idPro) {
+          iterator.quantity++;
+          localStorage.setItem("listProOnCart", JSON.stringify(this.Products));
+          return;
+        }
+      }
+    },
+    removeToCart(item) {
+      swal({
+        title: "Cảnh báo",
+        text: "Bạn có chắc loại bỏ sản phẩm khỏi giỏ hàng!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          this.Products.splice(this.Products.indexOf(item), 1);
+          localStorage.setItem("listProOnCart", JSON.stringify(this.Products));
+        }
       });
+    }
   }
 };
 </script>
 
 <style scoped>
-#do_action, #cart_items {
-    text-align: left;
+#cart_items {
+  text-align: left;
+}
+#cart_items .btn_quantity {
+  cursor: pointer;
+}
+#cart_items a.cart_quantity_delete.btn_quantity:hover > i.fa.fa-times {
+  color: white;
+}
+#cart_items i.fa.fa-times {
+  color: #fe980f;
 }
 </style>

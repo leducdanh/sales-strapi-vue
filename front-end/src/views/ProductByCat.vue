@@ -14,6 +14,7 @@
             :namePro="item.product.name"
             :image="item.product.image_link"
             :alias="item.product.alias"
+            :idPro="item.product.id"
           />
         </div>
       </div>
