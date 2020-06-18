@@ -16,7 +16,7 @@
             :alias="item.product.alias"
             :idPro="item.product.id"
             :wishlist="item.id"
-            v-on:DelWishlist="onEnlargeText"
+            v-on:DelWishlist="handleDelWishList"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ export default {
       });
   },
   methods: {
-    onEnlargeText(idDel) {
+    handleDelWishList(idDel) {
       for(let i=0;i<this.Products.length ;i++){
         if (this.Products[i].id == idDel)
           this.Products.splice(i, 1)
