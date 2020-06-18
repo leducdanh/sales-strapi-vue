@@ -26,14 +26,14 @@
               <tr v-for="item in Products" :key="item.idPro">
                 <td class="cart_product">
                   <router-link :to="`/product-detail/${item.alias}`">
-                    <img :src="item.image" alt style="width: 30%"/>
+                    <img :src="item.image" alt style="width: 100%"/>
                   </router-link>
                 </td>
                 <td class="cart_description">
                   <h4>{{item.namePro}}</h4>
                 </td>
                 <td class="cart_price">
-                  <p>{{item.price}} VNĐ</p>
+                  <p>{{item.price.toLocaleString()}} VNĐ</p>
                 </td>
                 <td class="cart_quantity">
                   <div class="cart_quantity_button">
@@ -51,7 +51,7 @@
                   </div>
                 </td>
                 <td class="cart_total">
-                  <p class="cart_total_price">{{item.quantity * item.price}} VNĐ</p>
+                  <p class="cart_total_price">{{(item.quantity * item.price).toLocaleString()}} VNĐ</p>
                 </td>
                 <td class="cart_delete">
                   <a class="cart_quantity_delete btn_quantity" @click="removeToCart(item)">
@@ -221,5 +221,19 @@ export default {
 }
 #cart_items i.fa.fa-times {
   color: #fe980f;
+}
+.cart_product{
+  width: 30%;
+  margin: 0 !important;
+}
+#cart_items .cart_info .cart_description h4{
+  margin: 0;
+}
+@media only screen and (max-width: 600px){
+  
+.cart_product{
+  width: 100%;
+  margin: 0 !important;
+}
 }
 </style>

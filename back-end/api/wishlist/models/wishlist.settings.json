@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wishlists",
+  "info": {
+    "name": "Wishlist"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "username": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "product": {
+      "unique": true,
+      "model": "products"
+    }
+  }
+}

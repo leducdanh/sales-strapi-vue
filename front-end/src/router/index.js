@@ -7,34 +7,44 @@ import Cart from '../views/Cart.vue';
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
     component: TemplataLayout,
     redirect: "/",
     children: [
-	{
-		path: '/',
-		name: 'Home',
-		component: Home
-	},
-    {
+      {
+        path: '/',
+        name: 'Home',
+        component: Home
+      },
+      {
         path: 'cat/:alias',
         name: 'ProductByCat',
         component: ProductByCat
-    },
-    {
+      },
+      {
         path: 'product-detail/:name',
         name: 'ProductDetail',
         component: () => import('../views/ProductDetail.vue')
-    },
-    {
+      },
+      {
         path: 'cart',
         name: 'Cart',
         component: Cart
-    }
-	]
+      },
+      {
+        path: 'wishlist',
+        name: 'Wishlist',
+        component: () => import('../views/Wishlist.vue')
+      },
+    ]
   },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../views/Login.vue')
+  }
 ]
 
 const router = new VueRouter({

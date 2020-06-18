@@ -52,6 +52,15 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "Address": {
+      "type": "string"
     }
   }
 }

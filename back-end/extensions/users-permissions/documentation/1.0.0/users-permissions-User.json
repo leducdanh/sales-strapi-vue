@@ -1244,6 +1244,15 @@
                 }
               }
             }
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "Address": {
+            "type": "string"
           }
         }
       },
@@ -1280,6 +1289,15 @@
             "default": false
           },
           "role": {
+            "type": "string"
+          },
+          "full_name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "Address": {
             "type": "string"
           }
         }

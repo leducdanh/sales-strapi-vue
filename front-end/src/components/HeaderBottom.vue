@@ -92,7 +92,6 @@ export default {
           }
         }
         this.$store.commit("setListMenu", this.listMenu);
-        console.log(this.$store.getters.listMenu);
       })
       .catch(err => {
         console.log(err);

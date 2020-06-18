@@ -34,10 +34,10 @@
 						<div class="shop-menu clearfix pull-right">
 							<ul class="nav navbar-nav">
 								<li><router-link to=""><i class="fa fa-user"></i> Account</router-link></li>
-								<li><router-link to=""><i class="fa fa-star"></i> Wishlist</router-link></li>
+								<li><router-link to="/wishlist"><i class="fa fa-star"></i> Wishlist</router-link></li>
 								<li><router-link to="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</router-link></li>
 								<li><router-link to="/cart"><i class="fa fa-shopping-cart"></i> Cart</router-link></li>
-								<li><router-link to="login.html"><i class="fa fa-lock"></i> Login</router-link></li>
+								<li><router-link to="/login"><i class="fa fa-lock"></i> Login</router-link></li>
 							</ul>
 						</div>
 					</div>
