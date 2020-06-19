@@ -22,9 +22,7 @@
             <h2>{{price.toLocaleString()}}VND</h2>
             <p>{{namePro}}</p>
             <router-link :to="`/product-detail/${alias}`" class="btn btn-default add-to-cart">
-              <!-- <a class="btn btn-default add-to-cart" @click="AddToCart"> -->
               <i class="fa fa-eye" aria-hidden="true"></i>Chi tiet
-              <!-- </a> -->
             </router-link>
             <a href="#" class="btn btn-default add-to-cart" @click="AddToCart">
               <i class="fa fa-shopping-cart"></i>Add to cart
@@ -39,11 +37,11 @@
               <i class="fa fa-plus-square"></i>{{wishlist ? "Del to wishlist" : "Add to wishlist"}}
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#">
               <i class="fa fa-plus-square"></i>Add to compare
             </a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -94,7 +92,7 @@ export default {
           swal("", "Thêm danh sách yêu thích thành công", "success");
         })
         .catch(err => {
-          console.log(err);
+          console.log(err.response);
         });
     },
     DelToWishlist() {

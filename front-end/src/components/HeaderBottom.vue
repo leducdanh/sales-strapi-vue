@@ -3,7 +3,7 @@
     <!--header-bottom-->
     <div class="container">
       <div class="row">
-        <div class="col-sm-9">
+        <div class="col-sm-12">
           <div class="navbar-header">
             <button
               type="button"
@@ -23,7 +23,7 @@
                 <router-link to="/">HOME</router-link>
               </li>
               <li class="dropdown" v-for="item in listMenu" :key="item.alias">
-                <router-link :to="'/cat/' + item.alias" >
+                <router-link :to="'/cat/' + item.alias">
                   {{item.name}}
                   <i v-if="item.submenu.length > 0" class="fa fa-angle-down"></i>
                 </router-link>
@@ -36,9 +36,19 @@
             </ul>
           </div>
         </div>
-        <div class="col-sm-3">
+        <!-- <div class="col-sm-3">
           <div class="search_box pull-right">
-            <input type="text" placeholder="Search" />
+            <input type="text" ref="keySearch" placeholder="Search" @keydown="search($event)" />
+            <i class="fa fa-search" id="icon-search" aria-hidden="true"></i>
+          </div>
+        </div> -->
+      </div>
+      <!-- end row -->
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="search_box pull-right">
+            <input type="text" ref="keySearch" placeholder="Search" @keydown="search($event)" />
+            <i class="fa fa-search" id="icon-search" aria-hidden="true" @click="search($event, 'click')"></i>
           </div>
         </div>
       </div>
@@ -96,6 +106,17 @@ export default {
       .catch(err => {
         console.log(err);
       });
+  },
+  methods: {
+    search(e, method = '') {
+      if (method == 'click'){
+        this.$router.push(`/search?keySearch=${e.path[1].children[0].value}`).catch(() => {});
+        return
+      }
+      
+      if (e.code != "Enter") return;
+      this.$router.push(`/search?keySearch=${e.target.value}`).catch(() => {});
+    },
   }
 };
 </script>
@@ -103,5 +124,19 @@ export default {
 <style scoped>
 ul.sub-menu {
   text-align: left !important;
+}
+.search_box{
+  position: relative;
+}.search_box input{
+  width: 300px !important;
+}
+#icon-search{
+  position: absolute;
+  right: 5%;
+  top: 30%;
+  cursor: pointer;
+}
+button.navbar-toggle{
+  margin-right: 0;
 }
 </style>
