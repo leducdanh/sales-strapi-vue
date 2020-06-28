@@ -19,12 +19,12 @@
         </div>
         <div class="product-overlay">
           <div class="overlay-content">
-            <h2>{{price.toLocaleString()}}VND</h2>
+            <h2>{{price ? price.toLocaleString() : ""}}VND</h2>
             <p>{{namePro}}</p>
             <router-link :to="`/product-detail/${alias}`" class="btn btn-default add-to-cart">
               <i class="fa fa-eye" aria-hidden="true"></i>Chi tiet
             </router-link>
-            <a href="#" class="btn btn-default add-to-cart" @click="AddToCart">
+            <a class="btn btn-default add-to-cart" @click="AddToCart">
               <i class="fa fa-shopping-cart"></i>Add to cart
             </a>
           </div>

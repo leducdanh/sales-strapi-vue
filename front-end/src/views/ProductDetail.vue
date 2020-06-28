@@ -44,11 +44,11 @@
                 <input type="text" value="1" />
               </span>
               
-                <button type="button" class="btn btn-fefault cart">
+                <button type="button" class="btn btn-fefault cart" @click="AddToCart">
                   <i class="fa fa-shopping-cart"></i>
                   Add to cart
                 </button>
-              <p v-if="infopro">
+              <p v-if="infopro" class="text-left">
                 {{infopro.content}}
               </p>
               <!-- <p>
@@ -102,7 +102,32 @@ export default {
       console.log(err)
     })
 
-  }
+  },
+  methods: {
+    AddToCart() {
+      // localStorage.setItem("item", )
+      let listProOnCart = [];
+      if (localStorage.getItem("listProOnCart")) {
+        listProOnCart = JSON.parse(localStorage.getItem("listProOnCart"));
+      }
+      for (const iterator of listProOnCart) {
+        if (iterator.idPro == this.idPro) {
+          iterator.quantity++;
+          localStorage.setItem("listProOnCart", JSON.stringify(listProOnCart));
+          return;
+        }
+      }
+      const item = {
+        price: this.price,
+        namePro: this.namePro,
+        image: this.image,
+        alias: this.alias,
+        idPro: this.idPro,
+        quantity: 1
+      };
+      listProOnCart.push(item);
+      localStorage.setItem("listProOnCart", JSON.stringify(listProOnCart));
+    },}
 };
 </script>
 
@@ -110,5 +135,8 @@ export default {
 <style scoped>
 .left {
     left: 0;
+}
+a img {
+    width: 25%;
 }
 </style>

@@ -10,7 +10,7 @@
               :class="index < 1 ? 'active' : ''" :key="item.id"></li>
             </ol>
 
-            <div class="carousel-inner">
+            <div class="carousel-inner text-left">
               <div v-for="(item, index) in ListImage" :class="index < 1 ? 'item active' : 'item'" :key="item.id">
                 <div class="col-sm-6">
                   <h1>
@@ -93,5 +93,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>
